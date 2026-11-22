@@ -10,7 +10,10 @@ Original file is located at
 Let's get started. Please specify what you would like to build or analyze here!
 """
 
-!pip install pypdf
+import subprocess
+import sys
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", "pypdf"])
 
 import pypdf
 
@@ -37,7 +40,17 @@ for page_num in [12, 13]:  # 0-indexed corresponding to pages 13 and 14
     print(reader.pages[page_num].extract_text())
 
 # 1. Install necessary dependencies for Stable Diffusion
-!pip install -q "diffusers>=0.33,<1" "transformers>=4.51,<5" accelerate safetensors
+subprocess.check_call([
+    sys.executable,
+    "-m",
+    "pip",
+    "install",
+    "-q",
+    "diffusers>=0.33,<1",
+    "transformers>=4.51,<5",
+    "accelerate",
+    "safetensors",
+])
 
 # 2. Common Setup (Seed configuration and output path definition)
 from pathlib import Path
